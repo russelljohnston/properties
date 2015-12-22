@@ -1,0 +1,15 @@
+base
+png
+slidify
+slidifyLibraries
+devtools
+shiny
+httr
+XML
+ggplot2
+dplyr
+bitops
+RCurl
+RJSONIO
+googleVis
+DT
