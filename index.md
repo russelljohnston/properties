@@ -10,7 +10,11 @@ widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : standalone # {standalone, draft}
 knit        : slidify::knit2slides
 ---
-
+<style>
+strong {
+  font-weight: bold;
+}
+</style>
 ## Introduction
 
 - Have you been offered a job in London or thinking of moving there?  
@@ -24,18 +28,23 @@ knit        : slidify::knit2slides
 ## Finding Rental Properties 
 <img style="float:right; margin:0px 20px 0px 20px;" src="rentpanel.png" height="500px"/>
 
-- We only consider rental accomodation and the options available to you are: area interested in, search radius, price range, property type, and the number of bedrooms. 
+- We only consider rental accomodation with options such as: area interested in, search radius, price range, property type, and the number of bedrooms, availble to you.
 
--  The default location is 'Watford, England', but this can of course be changed to any area/town/village/postcode within the UK. 
+- We have set the default location to 'Watford, England' as a demo,  but this can of course be changed to any area/town/village/postcode within the UK. [N.B. We use Google geocode API to try and return an accurate address]
+
 
 - Once you're ready, just click on `Fetch Properties` buttons to display your results.
 
----  .codefont .outfont.css
+- The app should warn you if no properties have been found within your search criterion. This usually means you should increase your search radius and/or your maximum price threshold.
+
+
+
+---  .codefont 
 
 ## Property Results
 
 
-<img style="float:right; margin:130px 20px 0px 20px;" src="rentresults.png" width="450px"/>
+<img style="float:right; margin:90px 10px 0px 20px;" src="rentresults.png" width="500px"/>
 
 
 
@@ -43,20 +52,19 @@ knit        : slidify::knit2slides
 ```r
 require(googleVis)
 load("stations.Rda")
-M<-gvisMap(df, "link" , "propertylink", options=list(showTip=TRUE,
-                        enableScrollWheel=TRUE,mapType='normal',width=450, height=270))
+M<-gvisMap(df, "link" , "propertylink", options=list(showTip=TRUE,enableScrollWheel=TRUE,mapType='normal',width=450, height=270))
 print(M,"chart")
 ```
 
 <!-- Map generated in R 3.2.1 by googleVis 0.5.10 package -->
-<!-- Wed Dec 23 10:03:59 2015 -->
+<!-- Wed Dec 23 16:55:02 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMapID34ca2e97a6c3 () {
+function gvisDataMapID34ca72bea2e8 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -409,8 +417,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMapID34ca2e97a6c3() {
-var data = gvisDataMapID34ca2e97a6c3();
+function drawChartMapID34ca72bea2e8() {
+var data = gvisDataMapID34ca72bea2e8();
 var options = {};
 options["showTip"] = true;
 options["enableScrollWheel"] = true;
@@ -419,7 +427,7 @@ options["width"] =    450;
 options["height"] =    270;
 
     var chart = new google.visualization.Map(
-    document.getElementById('MapID34ca2e97a6c3')
+    document.getElementById('MapID34ca72bea2e8')
     );
     chart.draw(data,options);
     
@@ -443,9 +451,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMapID34ca2e97a6c3);
+callbacks.push(drawChartMapID34ca72bea2e8);
 })();
-function displayChartMapID34ca2e97a6c3() {
+function displayChartMapID34ca72bea2e8() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -469,19 +477,17 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID34ca2e97a6c3"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID34ca72bea2e8"></script>
  
 <!-- divChart -->
   
-<div id="MapID34ca2e97a6c3" 
+<div id="MapID34ca72bea2e8" 
   style="width: 450; height: 270;">
 </div>
 
-- Returns up to 100 properties from [zoopla](http://www.zoopla.co.uk). 
+- Returns up to 100 properties from [zoopla](http://www.zoopla.co.uk) and we compute the average and median prices  and show the distributions.
 
-- We compute the average and median prices  and show the distributions.
-
-- And use the `googleVis` library to show the locations of each property. Click on one of the properties in the above Google Map. [**note: Refresh browser if map is not showing**]
+- The `googleVis` library shows the locations of each property. Click on one of the properties in the above map. [<strong>note: refresh your browser if map above  is not displaying properly.</strong>]
 
 ---
 
@@ -489,15 +495,13 @@ callbacks.shift()();
 
 <img style="float:left; margin:0px 20px 0px 20px;" src="transit.png" height="400px"/>
 
-- Once you are happy with your property results, the app will take your entered location and use it to compute train transit times via Google Maps API. 
+- Once you are happy with your property results, the app will take your entered location and use it for computing train transit times via Google Maps API. 
 
 - Simply enter your desired destination  e.g. this might be the place of work. 
 
-- Then, enter a search radius 
+- Enter a search radius and finally select a departure time. Default is set to roughly a rush hour time with the date always set to 'todays' date.
 
-- And finally a departure time. Default is set to roughly a rush hour time and the date set to todays.
+- The app will then return a list of stations within your search radius followed by transit times.
 
-- The app will then return a list of stations within yoru search radius followed by transit times.
-
-- Future versions of this app will include a lot more information such as: monthly commuting costs, and other outgoings set against your salary.
+- Future versions of this app will include a lot more information such as: monthly commuting costs, and other outgoings which you can set against your expected salary.
 
