@@ -7,7 +7,7 @@ framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
+mode        : standalone # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
@@ -30,22 +30,33 @@ knit        : slidify::knit2slides
 
 - Once you're ready, just click on `Fetch Properties` buttons to display your results.
 
----
+---  .codefont .outfont.css
 
 ## Property Results
 
-<img style="float:right; margin:0px 20px 0px 20px;" src="rentresults.png" width="450px"/>
 
+<img style="float:right; margin:130px 20px 0px 20px;" src="rentresults.png" width="450px"/>
+
+
+
+
+```r
+require(googleVis)
+load("stations.Rda")
+M<-gvisMap(df, "link" , "propertylink", options=list(showTip=TRUE,
+                        enableScrollWheel=TRUE,mapType='normal',width=450, height=270))
+print(M,"chart")
+```
 
 <!-- Map generated in R 3.2.1 by googleVis 0.5.10 package -->
-<!-- Tue Dec 22 21:37:03 2015 -->
+<!-- Wed Dec 23 10:03:59 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMapID217e7f8cc693 () {
+function gvisDataMapID34ca2e97a6c3 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -398,18 +409,17 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMapID217e7f8cc693() {
-var data = gvisDataMapID217e7f8cc693();
+function drawChartMapID34ca2e97a6c3() {
+var data = gvisDataMapID34ca2e97a6c3();
 var options = {};
 options["showTip"] = true;
-options["showLine"] = true;
 options["enableScrollWheel"] = true;
 options["mapType"] = "normal";
 options["width"] =    450;
 options["height"] =    270;
 
     var chart = new google.visualization.Map(
-    document.getElementById('MapID217e7f8cc693')
+    document.getElementById('MapID34ca2e97a6c3')
     );
     chart.draw(data,options);
     
@@ -433,9 +443,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMapID217e7f8cc693);
+callbacks.push(drawChartMapID34ca2e97a6c3);
 })();
-function displayChartMapID217e7f8cc693() {
+function displayChartMapID34ca2e97a6c3() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -459,20 +469,19 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID217e7f8cc693"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID34ca2e97a6c3"></script>
  
 <!-- divChart -->
   
-<div id="MapID217e7f8cc693" 
+<div id="MapID34ca2e97a6c3" 
   style="width: 450; height: 270;">
 </div>
-
 
 - Returns up to 100 properties from [zoopla](http://www.zoopla.co.uk). 
 
 - We compute the average and median prices  and show the distributions.
 
-- And use the `googleVis` library to show the locations of each property. Click on one of the properties in the above Google Map. [note: the map may not be displaying properly in Chrome browser -it seems to be a bit glitchy. On  a Mac try safari. If still not displaying try refreshing the slide. - sorry]
+- And use the `googleVis` library to show the locations of each property. Click on one of the properties in the above Google Map. [**note: Refresh browser if map is not showing**]
 
 ---
 
@@ -492,4 +501,3 @@ callbacks.shift()();
 
 - Future versions of this app will include a lot more information such as: monthly commuting costs, and other outgoings set against your salary.
 
----

@@ -8,19 +8,23 @@
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
     media="only screen and (max-device-width: 480px)" >
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/codefont.css"></link>
+<link rel=stylesheet href="./assets/css/codemargin.css"></link>
+<link rel=stylesheet href="./assets/css/outfont.css"></link>
+<link rel=stylesheet href="./assets/css/outmargin.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
-  <script data-main="libraries/frameworks/io2012/js/slides" 
-    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
   </script>
   
   
@@ -73,23 +77,30 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="codefont outfont.css" id="slide-3" style="background:;">
   <hgroup>
     <h2>Property Results</h2>
   </hgroup>
   <article data-timings="">
-    <p><img style="float:right; margin:0px 20px 0px 20px;" src="rentresults.png" width="450px"/></p>
+    <p><img style="float:right; margin:130px 20px 0px 20px;" src="rentresults.png" width="450px"/></p>
+
+<pre><code class="r">require(googleVis)
+load(&quot;stations.Rda&quot;)
+M&lt;-gvisMap(df, &quot;link&quot; , &quot;propertylink&quot;, options=list(showTip=TRUE,
+                        enableScrollWheel=TRUE,mapType=&#39;normal&#39;,width=450, height=270))
+print(M,&quot;chart&quot;)
+</code></pre>
 
 <!-- Map generated in R 3.2.1 by googleVis 0.5.10 package -->
 
-<!-- Tue Dec 22 21:37:03 2015 -->
+<!-- Wed Dec 23 10:03:59 2015 -->
 
 <!-- jsHeader -->
 
 <script type="text/javascript">
  
 // jsData 
-function gvisDataMapID217e7f8cc693 () {
+function gvisDataMapID34ca2e97a6c3 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -442,18 +453,17 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartMapID217e7f8cc693() {
-var data = gvisDataMapID217e7f8cc693();
+function drawChartMapID34ca2e97a6c3() {
+var data = gvisDataMapID34ca2e97a6c3();
 var options = {};
 options["showTip"] = true;
-options["showLine"] = true;
 options["enableScrollWheel"] = true;
 options["mapType"] = "normal";
 options["width"] =    450;
 options["height"] =    270;
 
     var chart = new google.visualization.Map(
-    document.getElementById('MapID217e7f8cc693')
+    document.getElementById('MapID34ca2e97a6c3')
     );
     chart.draw(data,options);
     
@@ -477,9 +487,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartMapID217e7f8cc693);
+callbacks.push(drawChartMapID34ca2e97a6c3);
 })();
-function displayChartMapID217e7f8cc693() {
+function displayChartMapID34ca2e97a6c3() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -505,19 +515,19 @@ callbacks.shift()();
 
 <!-- jsChart -->  
 
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID217e7f8cc693"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID34ca2e97a6c3"></script>
  
 
 <!-- divChart -->
 
-<div id="MapID217e7f8cc693" 
+<div id="MapID34ca2e97a6c3" 
   style="width: 450; height: 270;">
 </div>
 
 <ul>
 <li><p>Returns up to 100 properties from <a href="http://www.zoopla.co.uk">zoopla</a>. </p></li>
 <li><p>We compute the average and median prices  and show the distributions.</p></li>
-<li><p>And use the <code>googleVis</code> library to show the locations of each property. Click on one of the properties in the above Google Map. [note: the map may not be displaying properly in Chrome browser -it seems to be a bit glitchy. On  a Mac try safari. If still not displaying try refreshing the slide. - sorry]</p></li>
+<li><p>And use the <code>googleVis</code> library to show the locations of each property. Click on one of the properties in the above Google Map. [<strong>note: Refresh browser if map is not showing</strong>]</p></li>
 </ul>
 
   </article>
@@ -540,13 +550,6 @@ callbacks.shift()();
 <li><p>Future versions of this app will include a lot more information such as: monthly commuting costs, and other outgoings set against your salary.</p></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
-  <article data-timings="">
-    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -579,12 +582,6 @@ callbacks.shift()();
          4
       </a>
     </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='NA'>
-         5
-      </a>
-    </li>
   </ul>
   </div>  <!--[if IE]>
     <script 
@@ -596,7 +593,7 @@ callbacks.shift()();
   <!-- Load Javascripts for Widgets -->
   
   <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
    
